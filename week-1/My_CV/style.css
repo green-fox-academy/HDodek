@@ -4,17 +4,36 @@ body {
   line-height: 1.5;
   }
 
-img {
-    height: 500px;
-    width: 1320px;
-  }
-
-h1,
-h2  {
-  font-size: 22px;
-  font-family: Droid Serif;
+img{
+  margin: auto;
+  height: auto;
+  width: 100%;
 }
+
+  h1 {
+    color: white;
+    position: absolute;
+    top: 30px;
+    text-align: right;
+    height: auto;
+    width: 100%;
+    font-size: 100px;
+    font-weight:bolder;
+    font-family: Josefin Sans;
+    }
+
+h2  {
+  font-size: 36px;
+  font-family: Josefin Sans;
+  color: #616674;
+  }
 
 #datas {
   font-style: italic;
+  text-align: right;
+  margin-right: auto;
+}
+
+section {
+  margin-left: 100px;
 }
