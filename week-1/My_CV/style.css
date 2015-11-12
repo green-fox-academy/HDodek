@@ -1,0 +1,20 @@
+body {
+  font-size: 18px;
+  font-family: Josefin Sans;
+  line-height: 1.5;
+  }
+
+img {
+    height: 500px;
+    width: 1320px;
+  }
+
+h1,
+h2  {
+  font-size: 22px;
+  font-family: Droid Serif;
+}
+
+#datas {
+  font-style: italic;
+}
