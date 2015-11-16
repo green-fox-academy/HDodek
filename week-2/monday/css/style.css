@@ -1,0 +1,85 @@
+html {
+  min-height: 100%;
+
+}
+
+body {
+  margin: 0;
+  display: flex;
+  background: red;
+  min-height: 100vh;
+}
+
+.main-container {
+  background: yellow;
+  order: 1;
+  width: 100%;
+}
+
+.biography {
+  width: 270px;
+  background: #f9f9f9;
+  float: right;
+  border: 1px solid #aaa;
+  margin: 6px 0 12px 12px;
+  padding: 25px;
+  box-sizing: border-box;
+}
+
+.main-sidebar {
+  background: aqua;
+  order: 0;
+  width: 176px;
+}
+.main-header {
+  height: 80px;
+  background: purple;
+  position: relative;
+}
+
+.main-header nav , .search {
+  position: absolute;
+}
+
+.user-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.talk-menu {
+  position: relative;
+  left: 0;
+  top: 60px;
+}
+
+.edit-menu {
+  position: absolute;
+  right: 200px;
+  bottom: 0
+  }
+
+.search {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+}
+
+.main-header ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.main-header li {
+  list-style: none;
+}
+
+.main-footer {
+  height: 150px;
+  background: green;
+}
+
+.search input {
+  width: 300px;
+}
