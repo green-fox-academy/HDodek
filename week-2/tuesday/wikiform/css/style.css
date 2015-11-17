@@ -71,12 +71,6 @@ main {
   top: 60px;
 }
 
-.edit-menu {
-  position: absolute;
-  right: 300px;
-  bottom: 0
-}
-
 .search {
   position: absolute;
   right: 20px;
@@ -99,13 +93,56 @@ main {
 }
 
 .search input {
-  width: 300px;
+  width: 400px;
+  height: 20px;
 }
 .logo {
   display: block;
   width: 135px;
   height: 155px;
   background: url(../images/wikiicon.png);
-  margin: 6px, auto, 0;
-  color: rgb(0,0,0)
+  margin: 6px auto 0;
+  color: rgb(0,0,0);
+}
+
+.fulltext {
+  width: 290px;
+}
+
+label, input {
+  display: block;
+  width: 100%;
+  padding: 6px;
+}
+
+input {
+  height: 20px;
+}
+
+#submit {
+  width: 290px;
+  height: 35px;
+  color: white;
+  background: #00af89;
+  font-family: arial;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+#submit:hover {
+  background: #008c6d;
+}
+
+.helpme {
+  float: right;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+a:hover {
+  text-decoration: underline;
 }
