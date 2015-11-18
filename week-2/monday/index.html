@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="C:\Users\User\git\HDodek\week-2\monday\css\style.css">
-    <title>Wikipedia form</title>
+    <title>Margaret Hamilton</title>
   </head>
   <body>
     <div class="main-container">
@@ -12,29 +12,52 @@
 
         <nav class="user-menu">
           <ul>
-            <li>Create account</li>
-            <li>Not logged in</li>
-            <li>Talk</li>
-            <li>Contributions</li>
-            <li>Log in</li>
+            <li>
+              <a href="https://en.wikipedia.org/w/index.php?title=Special:UserLogin&returnto=Margaret+Hamilton+%28scientist%29&type=signup">Create account</a></li>
+            <li>
+              <img src="images/head.png" alt="head" />
+              <span>Not logged in</span></li>
+            <li>
+              <a href="https://en.wikipedia.org/wiki/Special:MyTalk">Talk</a></li>
+            <li>
+              <a href="https://en.wikipedia.org/wiki/Special:Contributions/82.150.33.130">Contributions</a></li>
+            <li>
+              <a href="https://en.wikipedia.org/w/index.php?title=Special:UserLogin&returnto=Margaret+Hamilton+%28scientist%29">Log in</a></li>
           </ul>
-        </nav>
-        <nav class="talk-menu">
+          </nav>
+
+          <nav class="talk-menu tab">
+            <ul>
+              <li class="active-tab">
+                <a href="https://en.wikipedia.org/wiki/Margaret_Hamilton_(scientist)">Article</a>
+              </li>
+              <li>
+                <a href="https://en.wikipedia.org/wiki/Talk:Margaret_Hamilton_(scientist)">Talk</a>
+              </li>
+            </ul>
+          </nav>
+
+        <nav class="edit-menu tab">
           <ul>
-            <li>Article</li>
-            <li>Talk</li>
+
+
+            <li class="active-tab">
+              <a href="https://en.wikipedia.org/wiki/Margaret_Hamilton_(scientist)">Read</a>
+            </li>
+
+            <li>
+              <a href="https://en.wikipedia.org/w/index.php?title=Margaret_Hamilton_(scientist)&action=edit&editintro=Template:BLP_editintro">Edit</a>
+            </li>
+            <li>
+              <a href="https://en.wikipedia.org/w/index.php?title=Margaret_Hamilton_(scientist)&action=history">View history</a>
+            </li>
           </ul>
         </nav>
 
-        <nav class="edit-menu">
-          <ul>
-            <li>Read</li>
-            <li>Edit</li>
-            <li>View history</li>
-          </ul>
-        </nav>
-        <form>
-          <input class="search" type="search">
+        <form class="search">
+          <input type="search" placeholder="Search">
+
+          <input type="submit" value="">
 
         </form>
       </header>

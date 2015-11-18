@@ -1,3 +1,18 @@
+a {
+  color: #0645ad;
+  text-decoration: none;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+   -webkit-appearance: none;
+}
+
+span {
+  color: grey;
+
+}
+
 html {
   min-height: 100%;
 }
@@ -5,10 +20,10 @@ html {
 body {
   margin: 0;
   display: flex;
-  background: #f6f6f6;
-  min-height: 100vh;
+  background: linear-gradient(to bottom, #fff 0, #f6f6f6 160px);
   font-family: sans-serif;
   font-size: 0.9em;
+  min-height: 100vh;
 }
 
 h1, h2 {
@@ -53,37 +68,8 @@ main {
 .main-header {
   height: 80px;
   position: relative;
+  font-size: 12px;
 }
-
-.main-header nav , .search {
-  position: absolute;
-}
-
-.user-menu {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.talk-menu {
-  position: relative;
-  left: 0;
-  top: 60px;
-}
-
-.edit-menu {
-  position: absolute;
-  right: 300px;
-  bottom: 0
-}
-
-.search {
-  position: absolute;
-  right: 20px;
-  bottom: 0;
-  width: 270px;
-}
-
 .main-header ul {
   margin: 0;
   padding: 0;
@@ -94,13 +80,101 @@ main {
   list-style: none;
 }
 
+.main-header nav , .search {
+  position: absolute;
+}
+
+.user-menu {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.user-menu a, span {
+  padding: 8px;
+  display: block;
+  color: #0b0080;
+}
+
+.user-menu a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.talk-menu {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.edit-menu {
+  position: absolute;
+  right: 300px;
+  bottom: 0;
+}
+.tab ul {
+  background: linear-gradient(to bottom, transparent 0%, #a7d7f9 100%);
+  padding-left: 1px;
+
+}
+
+.tab a {
+  display: block;
+  padding: 15px 5px 5px;
+  background: linear-gradient(to bottom, #fff 0%, #e8f2f8  100%);
+  margin-right: 1px;
+  bottom: -1px;
+  position: relative;
+}
+
+.active-tab a {
+  background: white;
+  border-bottom: 1px solid #fff;
+}
+
+.search {
+  position: absolute;
+  right: 10px;
+  bottom: 0px;
+  padding-bottom: 5px;
+}
+
 .main-footer {
   height: 150px;
 }
 
-.search input {
-  width: 300px;
+.search input[type="search"]  {
+  width: 270px;
+  height: 25px;
+  border: 1px solid #ccc;
+  padding: 1px;
+  font: 16px, arial, sans-serif;
+  background: url(https://en.wikipedia.org/static/1.27.0-wmf.6/skins/Vector/images/search-ltr.png?511c1) no-repeat calc(100% - 5px) 50%;
+              linear-gradient(to bottom, #f6f6f6 0%, #fff 100%);
+  -webkit-appearance: textfield;
 }
+
+.search input[type="search"]:focus {
+  outline: 0;
+  padding-right: 20px;
+}
+
+.search input[type="submit"] {
+    position: absolute;
+    right: 0px;
+    bottom: 6px;
+    height: 24px;
+    border: 1px solid transparent;
+    padding: 1px;
+    width: 25px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.search input[type="submit"] {
+  outline: 0;
+}
+
 .logo {
   display: block;
   width: 135px;
