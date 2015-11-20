@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Form proba</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Form proba</h1>
+      <form action="aaaa">
+
+        <p>
+          <label for="valami">Felhasznalo nev</label>
+          <input type="text" required id="valami" placeholder="blabla">
+        </p>
+
+        <p>
+          <label for="keres">Kereses</label>
+          <input type="search" id="search">
+        </p>
+
+        <p>
+          <label for="ize">Checkbox</label>
+          <input type="checkbox" id="ize">
+        </p>
+
+        <p>
+          <label for="webcim">webcim</label>
+          <input type="url" id="url">
+        </p>
+
+        <p>
+          <label for="szinek">Szinecskek</label>
+          <input type="color" id="color">
+        </p>
+
+        <p>
+          <label for="szamok">Szamocskak</label>
+          <input type="number" id="numbers">
+        </p>
+
+        <p>
+          <label for="csik">csik</label>
+          <input type="range" id="range">
+        </p>
+
+        <p>
+          <progress value="50" max="100">50%</progress>
+        </p>
+
+        <p>
+          <label for="datum">datumocska</label>
+          <input type="date" id="date">
+        </p>
+
+        <p>
+          <input type="submit" value="nyomd meg">
+          <button type="submit" name="gomb">submitoljad</button>
+        </p>
+
+        <p>
+          <label for="jelszo">jelszo</label>
+          <input type="password" value="blabla">
+        </p>
+
+        <p>
+          <label for="mailcim">e-mail cim</label>
+          <input type="email">
+        </p>
+
+        <p>
+          <ul>
+            <li>
+              <label for="radio">
+              <input type="radio" name="bigyok" value="sokfelek">
+              egyik gombocska
+              </label>
+            </li>
+            <li>
+              <label for="radio2">
+              <input type="radio" name="bigyok" value="egyfelek">
+              Masik gombocska
+            </li>
+            </ul>
+        </p>
+
+        <p>
+          <label for="legordulo">valasztahto lista + option</label>
+          <select id="legordulo">
+            <option>ize</option>
+            <option>bizbasz</option>
+            <option>satobbi</option>
+          </select>
+        </p>
+        <p>
+          <label for="legordulo">valasztahto lista + option egyet ne</label>
+          <select id="legordulo">
+            <option disabled="ize">ize</option>
+            <option>bizbasz</option>
+            <option>satobbi</option>
+          </select>
+        </p>
+        <p>
+          <label for="texterulet">textarea</label>
+          <textarea id="textecske" rows="8" cols="40">ideirjalsokmindent</textarea>
+        </p>
+      </form>
+
+  </body>
+</html>
