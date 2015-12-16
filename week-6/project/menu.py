@@ -1,74 +1,165 @@
+from random import randint
 
 
-
-menu_items = [{"name": "New Game"},
-              {"name": "Load Game"},
-              {"name": "Exit"}]
-
-new_game_name_items = [{"name": "Re-enter name"},
-                       {"name": "Continue"},
-                       {"name": "Save"},
-                       {"name": "Quit"}]
+class MenuItem():
+    def __init__(self, num, name, action):
+        self.num = num
+        self.name = name
+        self.action = action
 
 class Menu():
-    def __init__(self, menu_items):
-        self.menu_items = menu_items
+    def __init__(self, items):
+        self.items = items
+
+    def choose(self, number):
+        for item in self.items:
+                if item.num == number:
+                    return item.action()
 
     def printMenu(self):
-        for index, item in enumerate(self.menu_items):
-            print(index + 1, item["name"])
+        for item in self.items:
+            print(item.num, item.name)
 
-    def menuChooser(self):
+    def user_input(self):
+        user_input = int(input("Choose your faith! " + "\n"))
+        try:
+            if user_input == "" or user_input > len(menu_items):
+                raise ValueError
+        except:
+            print("Hey, that\'s not an option!")
+        return user_input
+
+    def print_and_choose_menu_input(self):
         self.printMenu()
-        try:
-            chooser = int(input("Choose your faith! "))
-            if chooser == "" or chooser > 3:
-                raise ValueError
-            elif chooser == 1:
-                new_game_menu = NewGame(new_game_name_items)
-                new_game_menu.userName()
-            elif chooser == 2:
-                pass
-            elif chooser == 3:
-                self.exitGame()
-        except:
-            print("Hey, that\'s not an option!")
+        self.choose(self.user_input())
 
-    def exitGame(self):
-        pass
+class Character():
+    def __init__(self, name = None, dexterity = 0, hp = 0, luck = 0, potion = None):
+        self.name = name
+        self.dexterity = dexterity
+        self.hp = hp
+        self.luck = luck
+        self.potion = potion
 
-class NewGame(Menu):
-    def __init__(self, new_game_items):
-        self.new_game_items = new_game_items
+    def input_name(self):
+        print('\033c')
+        self.name = input("Tell me your name, young hero! " + "\n")
+        return self.name
 
-    def print_name_sub_menu(self):
-        for index, item in enumerate(self.new_game_items):
-            print(index + 1, item["name"])
+    def dexterity_rollstat(self):
+        self.dexterity = randint(1, 6) + 6
+        return(print("dexterity points: " , self.dexterity))
 
-    def userName(self):
-        print("\033c")
-        username = input("Please, give me your name young hero! " + "\n")
-        print("God day" + " " + username + "!"+ " ")
-        self.name_sub_chooser()
+    def health_rollstat(self):
+        self.hp = randint(2, 12) + 12
+        return(print("health points: " , self.hp))
 
-    def name_sub_chooser(self):
-        self.print_name_sub_menu()
-        try:
-            chooser = int(input("What\'s next?"+ "\n"))
-            if chooser == "" or chooser > 4:
-                raise ValueError
-            elif chooser == 1:
-                pass
-            elif chooser == 2:
-                pass
-            elif chooser == 3:
-                self.exit_name()
-        except:
-            print("Hey, that\'s not an option!")
+    def luck_rollstat(self):
+        self.luck = randint(1, 6) + 6
+        return(print("luck points: " , self.luck, "\n"))
 
-    def exit_name(self):
-        menuChooser()
+    def roll_dex_hp_luck_stats(self):
+        text = input("Press Enter to roll the dice for the basic stats (dexterity, hp, luck)! " + "\n")
+        self.dexterity_rollstat()
+        self.health_rollstat()
+        self.luck_rollstat()
+        roll_stats()
 
+    def choose_potion(self, potion):
+        potion_menu(potion)
+
+    def print_character_stat(self):
+        print(self.name + " " + "stats: " + "\n")
+        print("Dexterity points: ", self.dexterity)
+        print("Health points: ", self.hp)
+        print("Luck points: ", self.luck)
+
+class Opponent():
+    def __init__(self, name = "Sanyii", hp = 0, dexterity = 0):
+        self.name = name
+        self.hp = hp
+        self.dexterity = dexterity
+
+    def opp_dexterity_rollstat(self):
+        self.dexterity = randint(1, 6)
+        return(print("dexterity points: " , self.dexterity))
+
+    def opp_health_rollstat(self):
+        self.hp = randint(2, 12)
+        return(print("health points: " , self.hp))
+
+    def print_opp_stat(self):
+        print(self.name + " " + "stats: " + "\n")
+        print("Dexterity points: ", self.dexterity)
+        print("Health points: ", self.hp)
+        print("Luck points: ", self.luck)
+
+def load_game():
+    pass
+
+def exit_game():
+    pass
+
+def begin_game_menu():
+    begin_game_menu = Menu([
+                MenuItem(1, "Begin", None),
+                MenuItem(2, "Save", None),
+                MenuItem(3, "Quit", quit_game)
+                ])
+    new_player.print_character_stat()
+    begin_game_menu.print_and_choose_menu_input()
+
+def potion_chooser():
+    potions = Menu([
+                MenuItem(1, "Potion of Health", lambda: new_player.choose_potion("Potion of Health")),
+                MenuItem(2, "Potion of Dexterity", lambda: new_player.choose_potion("Potion of Dexterity")),
+                MenuItem(3, "Potion of Luck", lambda: new_player.choose_potion("Potion of Luck"))
+                ])
+    potions.print_and_choose_menu_input()
+
+def potion_menu(potion):
+    print("Your selected potion is: " + potion + "\n")
+    potion_menu = Menu([
+                MenuItem(1, "Reselect the Potion", potion_chooser),
+                MenuItem(2, "Continue", begin_game_menu),
+                MenuItem(3, "Quit", quit_game)
+                ])
+    potion_menu.print_and_choose_menu_input()
+
+def roll_stats():
+    roll_stats_menu_items = Menu([
+                MenuItem(1, "Re-roll stats", new_player.roll_dex_hp_luck_stats),
+                MenuItem(2, "Continue", potion_chooser),
+                MenuItem(3, "Save", None),
+                MenuItem(4, "Quit", quit_game)
+                ])
+    roll_stats_menu_items.print_and_choose_menu_input()
+
+def quit_game():
+    quit_game_menu_items = Menu([
+                MenuItem(1, "Save and Quit", exit_game),
+                MenuItem(2, "Quit without save", exit_game),
+                MenuItem(3, "Resume", new_game_action)
+                ])
+    quit_game_menu_items.print_and_choose_menu_input()
+
+def new_game_action():
+    new_game_name_items = Menu([
+                MenuItem(1, "Re-enter name", new_player.input_name),
+                MenuItem(2, "Continue", new_player.roll_dex_hp_luck_stats),
+                MenuItem(3, "Save", None),
+                MenuItem(4, "Quit", quit_game)
+                ])
+    new_player.input_name()
+    new_game_name_items.print_and_choose_menu_input()
+
+menu_items = [
+          MenuItem(1, 'New Game', new_game_action),
+          MenuItem(2, 'Load Game', load_game),
+          MenuItem(3, 'Exit Game', exit_game)
+        ]
 
 menu = Menu(menu_items)
-menu.menuChooser()
+new_player = Character()
+enemy = Opponent()
+menu.print_and_choose_menu_input()
