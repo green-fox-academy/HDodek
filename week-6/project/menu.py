@@ -180,7 +180,7 @@ def strike_menu():
 
 def begin_game_menu():
     begin_game_menu = Menu([
-                MenuItem(1, "Begin", None),
+                MenuItem(1, "Begin", enemy.print_opp_and_char_stats),
                 MenuItem(2, "Save", None),
                 MenuItem(3, "Quit", quit_game)
                 ])
@@ -199,7 +199,7 @@ def potion_menu(potion):
     print("Your selected potion is: " + potion + "\n")
     potion_menu = Menu([
                 MenuItem(1, "Reselect the Potion", potion_chooser),
-                MenuItem(2, "Continue", enemy.print_opp_and_char_stats),
+                MenuItem(2, "Continue", begin_game_menu),
                 MenuItem(3, "Quit", quit_game)
                 ])
     potion_menu.print_and_choose_menu_input()
