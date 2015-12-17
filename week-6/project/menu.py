@@ -1,6 +1,5 @@
 from random import randint
 
-
 class MenuItem():
     def __init__(self, num, name, action):
         self.num = num
@@ -24,7 +23,7 @@ class Menu():
         user_input = int(input("Choose your faith! " + "\n"))
         print('\033c')
         try:
-            if user_input == "" or user_input > len(menu_items):
+            if user_input == "" or user_input > len(menu.items):
                 raise ValueError
         except:
             print("Hey, that\'s not an option!")
@@ -76,7 +75,7 @@ class Character():
         print("Luck points: ", self.luck)
 
 class Opponent():
-    def __init__(self, name = "Sanyii", hp = 0, dexterity = 0):
+    def __init__(self, name = "Sanyi", hp = 0, dexterity = 0):
         self.name = name
         self.hp = hp
         self.dexterity = dexterity
@@ -107,23 +106,69 @@ class Fight():
         self.character_strike = character_strike
         self.opponent_strike = opponent_strike
 
-    def strike(self):
+    def current_dex(self):
         strike_dex_char = randint(2, 12)
         strike_dex_opp = randint(2, 12)
         self.character_strike = (new_player.dexterity + strike_dex_char)
         self.opponent_strike = (enemy.dexterity + strike_dex_opp)
         print(new_player.name, "dexterity during the strike" , self.character_strike)
         print(enemy.name, "dexterity during the strike" , self.opponent_strike, "\n")
-        if self.character_strike > self.opponent_strike:
-            print("OMG, you hit the f*cking MONSTER!!")
-        else:
-            print("Sorry buddy, the f*cking Monster hit you!")
 
-def load_game():
-    pass
+    def after_strike(self):
+        if self.character_strike > self.opponent_strike:
+            enemy.hp -= 2
+            print("OMG, you hit the f*cking MONSTER!!" , "\n" , "It has only" , enemy.hp , "hp points left")
+        else:
+            new_player.hp -= 2
+            print("Sorry buddy, the f*cking Monster hit you!""\n" , "You have" , new_player.hp , "hp points left")
+
+    def is_alive(self):
+        if new_player.hp <= 0:
+            print("You\'re dead. I think this whole hero stuff is not your thing...Or you can start again and try not to be a bitch!")
+        elif enemy.hp <= 0:
+            print("YOU\'VE JUST KILLED THE BEAST! F*cking amazing! I think your job is done here.")
+        else:
+            pass
+
+    def strike(self):
+        self.current_dex()
+        self.after_strike()
+        print("\n")
+        self.is_alive()
+        after_strike_menu()
+
+    def try_luck(self):
+        random_luck = randint(2, 12)
+        if new_player.luck < random_luck and self.character_strike < self.opponent_strike:
+            new_player.hp -= 3
+            print("You have no luck, you have lost 3 healt points")
+            strike_menu()
+        elif new_player.luck >= random_luck and self.character_strike < self.opponent_strike:
+            new_player.hp -= 1
+            new_player.luck -= 1
+            print("You are lucky")
+            strike_menu()
+        elif new_player.luck < random_luck and self.character_strike > self.opponent_strike:
+            new_player.hp -= 1
+            print("You have no luck")
+            strike_menu()
+        elif new_player.luck >= random_luck and self.character_strike > self.opponent_strike:
+            new_player.hp -= 4
+            new_player.luck -= 1
+            print("This is luck!")
+            strike_menu()
 
 def exit_game():
     pass
+
+def after_strike_menu():
+    after_strike_menu = Menu([
+                MenuItem(1, "Continue", fight.strike),
+                MenuItem(2, "Try your luck", fight.try_luck),
+                MenuItem(3, "Retreat", None),
+                MenuItem(4, "Quit", quit_game)
+                ])
+    after_strike_menu.print_and_choose_menu_input()
 
 def strike_menu():
     strike_menu = Menu([
@@ -188,8 +233,8 @@ def new_game_action():
 
 menu_items = [
           MenuItem(1, 'New Game', new_game_action),
-          MenuItem(2, 'Load Game', load_game),
-          MenuItem(3, 'Exit Game', exit_game)
+          MenuItem(2, 'Load Game', None),
+          MenuItem(3, 'Exit Game', quit_game)
         ]
 
 menu = Menu(menu_items)
