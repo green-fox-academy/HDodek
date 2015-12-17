@@ -22,6 +22,7 @@ class Menu():
 
     def user_input(self):
         user_input = int(input("Choose your faith! " + "\n"))
+        print('\033c')
         try:
             if user_input == "" or user_input > len(menu_items):
                 raise ValueError
@@ -82,23 +83,55 @@ class Opponent():
 
     def opp_dexterity_rollstat(self):
         self.dexterity = randint(1, 6)
-        return(print("dexterity points: " , self.dexterity))
+        return("dexterity points: " , self.dexterity)
 
     def opp_health_rollstat(self):
         self.hp = randint(2, 12)
-        return(print("health points: " , self.hp))
+        return("health points: " , self.hp)
 
     def print_opp_stat(self):
+        self.opp_dexterity_rollstat()
+        self.opp_health_rollstat()
         print(self.name + " " + "stats: " + "\n")
         print("Dexterity points: ", self.dexterity)
         print("Health points: ", self.hp)
-        print("Luck points: ", self.luck)
+
+    def print_opp_and_char_stats(self):
+        print("Test your Sword in a test fight! " + "\n")
+        print(new_player.print_character_stat(), "\n")
+        print(self.print_opp_stat(), "\n")
+        strike_menu()
+
+class Fight():
+    def __init__(self, character_strike = None, opponent_strike = None):
+        self.character_strike = character_strike
+        self.opponent_strike = opponent_strike
+
+    def strike(self):
+        strike_dex_char = randint(2, 12)
+        strike_dex_opp = randint(2, 12)
+        self.character_strike = (new_player.dexterity + strike_dex_char)
+        self.opponent_strike = (enemy.dexterity + strike_dex_opp)
+        print(new_player.name, "dexterity during the strike" , self.character_strike)
+        print(enemy.name, "dexterity during the strike" , self.opponent_strike, "\n")
+        if self.character_strike > self.opponent_strike:
+            print("OMG, you hit the f*cking MONSTER!!")
+        else:
+            print("Sorry buddy, the f*cking Monster hit you!")
 
 def load_game():
     pass
 
 def exit_game():
     pass
+
+def strike_menu():
+    strike_menu = Menu([
+                MenuItem(1, "Strike", fight.strike),
+                MenuItem(2, "Retreat", None),
+                MenuItem(3, "Quit", quit_game)
+                ])
+    strike_menu.print_and_choose_menu_input()
 
 def begin_game_menu():
     begin_game_menu = Menu([
@@ -121,7 +154,7 @@ def potion_menu(potion):
     print("Your selected potion is: " + potion + "\n")
     potion_menu = Menu([
                 MenuItem(1, "Reselect the Potion", potion_chooser),
-                MenuItem(2, "Continue", begin_game_menu),
+                MenuItem(2, "Continue", enemy.print_opp_and_char_stats),
                 MenuItem(3, "Quit", quit_game)
                 ])
     potion_menu.print_and_choose_menu_input()
@@ -162,4 +195,5 @@ menu_items = [
 menu = Menu(menu_items)
 new_player = Character()
 enemy = Opponent()
+fight = Fight()
 menu.print_and_choose_menu_input()
