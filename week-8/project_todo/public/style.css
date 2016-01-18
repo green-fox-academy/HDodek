@@ -1,0 +1,31 @@
+body {
+  text-align: center;
+  background-image: url(lux.png);
+}
+
+li {
+  list-style: none;
+}
+
+h1 {
+  font-size: 60px;
+  margin: 20px;
+  text-align: center;
+  display: block;
+  color: #477187;
+}
+
+ul {
+  font-size: 20px;
+}
+
+
+.item-input {
+  width: 150px;
+  padding: 10px 30px;
+  border-left: 1px solid #7d82b0;
+  border-right: 1px solid #7d82b0;
+  border-bottom: 2px solid #7d82b0;
+  border-top: 15px solid #477187;
+  text-align: center;
+}
